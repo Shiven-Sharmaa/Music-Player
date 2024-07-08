@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musify</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h1 class="header" id="header">MUSIFY</h1>
+    <button id="theme">DARK</button>
+    <div id="container">
+        
+        <main class="musicbody" id="musicbody">
+            <audio src="music/fein.mp3" id="audio"></audio>
+
+            <div class="currmusic play">
+                <div id="currimg"><img src="images/fein.jpg" alt="cover" id="imgdp"></div>
+                <div class="musicinfo">
+                    <p class="voltxt">Set Volume</p>
+                    <div id="volumebar">
+                        <div id="volume" class="volume  "></div>
+                    </div>
+                    <div class="mainmusicbody">
+                        <div id="currtitle">songtitle</div>
+                        <div id="curr-prog" class="curr-prog">
+                            <div id="progress" class="progress"></div>
+                        </div>
+                        <nav class="navi">
+                            <button id="prev">
+                                PREV
+                            </button>
+                            <button id="play">
+                                PLAY
+                            </button>
+                            <button id="next">
+                                NEXT
+                            </button>
+                        </nav>
+                    </div>
+                    <div id="upnext">
+                        <div class="upnext-txt">Song Queue:</div>
+                        <ul id="nextsongtitle">
+                            <li class="queuesongs">1</li>
+                            <li class="queuesongs">2</li>
+                            <li class="queuesongs">3</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="nextsong">
+            <div id="nexttxt">
+                UPCOMING
+            </div>
+            <img src="" alt="next-song" id="nextimg">
+            <div id="nexttitle"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

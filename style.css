@@ -1,0 +1,574 @@
+body{
+    background-color: #CAD2C5;
+    /* background-image:url('images/bg.jpg');
+    background-size: fill; */
+    margin: 0;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+:root {
+    --clr-1: #052b2f;
+    --clr-2: #073438;
+    --clr-3: #0e4b50;
+    --clr-4: #2d8f85;
+    --clr-5: #637c54;
+  }
+@media (width >= 1000px) {
+    .header{
+        margin: 0.3em auto;
+        text-align: center;
+        color: #2F3E46;
+        font-size: 70px;
+        margin-bottom: 0.4em;
+    }
+    .musicbody{
+        flex-grow: 1;
+        min-height: 300px;
+        max-width: 860px;
+        margin-left: auto;
+        margin-right: 5em;
+        background-color: rgba(82, 121, 111,0.5);
+        border-radius: 5%;
+        padding: 1em;
+        padding-right: 0;
+        position: relative;
+    }
+
+    .musicbody::before,
+    .musicbody::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-3),
+        var(--clr-4),
+        var(--clr-5),
+        var(--clr-4),
+        var(--clr-3)
+    );
+    border-radius: inherit;
+    animation: rotation 5s linear infinite;
+    }
+
+    .musicbody::after {
+    filter: blur(3.5rem);
+    }
+
+    @keyframes rotation {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
+    }
+
+    .currmusic{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    #currimg img{
+        object-fit: cover;
+        border-radius: 5%;
+        width: 500px;
+        height: 500px;
+    }
+    #currimg{
+        margin: 0;
+    }
+    #imgdp img{
+        width: 500px;
+        height: 500px;
+    }
+    .musicinfo{
+        flex: 1;
+        margin: 0;
+        padding: 2em;
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    #currtitle{
+        color: #CAD2C5;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 0.7em;
+        margin-bottom: 0.4em;
+    }
+    #play{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    #play:hover{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background-color: #354F52;
+        border: none;
+        border-radius: 5px;
+    }
+    #next{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    #next:hover{
+        font-size: 16px;
+        color:  #CAD2C5 ;
+        padding:0 1em;
+        cursor: pointer;
+        background-color: #354F52;
+        border: none;
+        border-radius: 5px;
+    }
+    #prev{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    #prev:hover{
+        font-size: 16px;
+        padding:0 1em;
+        cursor: pointer;
+        background-color:  #354F52;
+        border: none;
+        border-radius: 5px;
+    }
+    #curr-prog {
+        background: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 2em 0;
+        height: 4px;
+        width: 250px;
+    }
+    #curr-prog:hover {
+        background: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 2em 0;
+        height: 10px;
+        width: 100%;
+    }
+    #progress {
+        background-color: #fe8daa;
+        border-radius: 5px;
+        height: 100%;
+        width: 0%;
+        transition: width 0.1s linear;
+    }
+    #volumebar {
+        align-self: center;
+        background: #354F52;
+        border-radius: 5px;
+        cursor: pointer;
+        margin:0;
+        margin-top:1em;
+        margin-bottom: 2em;
+        height: 4px;
+        width: 80%;
+    }
+    #volumebar:hover {
+        align-self: center;
+        background: #354F52;
+        border-radius: 5px;
+        cursor: pointer;
+        margin:0;
+        margin-top:1em;
+        margin-bottom: 2em;
+        height: 10px;
+        width: 80%;
+    }
+    #volume {
+        background-color: white;
+        border-radius: 5px;
+        height: 100%;
+        width: 0%;
+        transition: width 0.1s linear;
+    }
+    .voltxt{
+        margin: 0;
+        color: #CAD2C5;
+        justify-self: flex-start;
+    }
+    .mainmusicbody{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+    }
+    #upnext{
+        margin-top: 2em;
+        align-self: flex-start;
+        padding-left: 1em;
+        font-size: 20px;
+    }
+    .upnext-txt{
+        color:#9FBCA5;
+        font-size: 24px;
+    }
+    #nextsongtitle{
+        list-style:decimal;
+        padding: 0;
+    }
+    .queuesongs{
+        color: #9FBCA5;
+        padding-left: 0.2em;
+    }
+    .navi{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+    }
+    #theme{
+        position:absolute;
+        right: 20px;
+        top: 20px;
+        background: none;
+        border: none;
+        color: #0e4b50;
+        cursor: pointer;
+        font-size: 30px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    #container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .nextsong{
+        margin: 2em;
+        margin-right: auto;
+        padding: 0;
+        height: 270px;
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+    }
+    #nextimg{
+        opacity: 50%;
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    #nexttxt{
+        margin-bottom: 1em;
+        color: #2F3E46;
+        font-size: 20px;
+    }
+    #nexttitle{
+        margin-top: 0.6em;
+        margin-bottom: 1em;
+        color: #2F3E46;
+        font-size: 16px;
+        opacity: 50%;
+    }
+}
+
+
+
+
+
+@media (width <= 1000px) {
+    #nexttitle{
+        margin-top: 0.6em;
+        margin-bottom: 1em;
+        color: #2F3E46;
+        font-size: 16px;
+        opacity: 50%;
+    }
+    .header{
+        margin: 0.3em auto;
+        text-align: center;
+        color: #2F3E46;
+        font-size: 70px;
+        margin-bottom: 0.5em;
+    }
+    .musicbody{
+        flex-grow: 1;
+        min-height: 300px;
+        max-width: 860px;
+        margin-left: 4em;
+        margin-right: 4em;
+        margin-bottom: 2em;
+        background-color: rgba(82, 121, 111,0.5);
+        border-radius: 5%;
+        padding: 1em;
+        padding-right: 0;
+        position: relative;
+    }
+
+    .musicbody::before,
+    .musicbody::after {
+    content: "";
+    position: absolute;
+    inset: -0.5rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--clr-3),
+        var(--clr-4),
+        var(--clr-5),
+        var(--clr-4),
+        var(--clr-3)
+    );
+    border-radius: inherit;
+    animation: rotation 5s linear infinite;
+    }
+
+    .musicbody::after {
+    filter: blur(3.5rem);
+    }
+
+    @keyframes rotation {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
+    }
+
+    .currmusic{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #currimg img{
+        object-fit: cover;
+        border-radius: 5%;
+        width: 500px;
+        height: 500px;
+    }
+    #currimg{
+        margin: 0;
+    }
+    #imgdp img{
+        width: 500px;
+        height: 500px;
+    }
+    .musicinfo{
+        flex: 1;
+        margin: 0;
+        padding: 2em;
+        padding-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    #currtitle{
+        color: #CAD2C5;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 0.7em;
+        margin-bottom: 0.4em;
+    }
+    #play{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    #play:hover{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background-color: #354F52;
+        border: none;
+        border-radius: 5px;
+    }
+    #next{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    #next:hover{
+        font-size: 16px;
+        color:  #CAD2C5 ;
+        padding:0 1em;
+        cursor: pointer;
+        background-color: #354F52;
+        border: none;
+        border-radius: 5px;
+    }
+    #prev{
+        font-size: 16px;
+        color:  #CAD2C5;
+        padding:0 1em;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+    #prev:hover{
+        font-size: 16px;
+        padding:0 1em;
+        cursor: pointer;
+        background-color:  #354F52;
+        border: none;
+        border-radius: 5px;
+    }
+    #curr-prog {
+        background: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 2em 0;
+        height: 4px;
+        width: 250px;
+    }
+    #curr-prog:hover {
+        background: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 2em 0;
+        height: 10px;
+        width: 100%;
+    }
+    #progress {
+        background-color: #fe8daa;
+        border-radius: 5px;
+        height: 100%;
+        width: 0%;
+        transition: width 0.1s linear;
+    }
+    #volumebar {
+        align-self: center;
+        background: #354F52;
+        border-radius: 5px;
+        cursor: pointer;
+        margin:0;
+        margin-top:1em;
+        margin-bottom: 2em;
+        height: 4px;
+        width: 80%;
+    }
+    #volumebar:hover {
+        align-self: center;
+        background: #354F52;
+        border-radius: 5px;
+        cursor: pointer;
+        margin:0;
+        margin-top:1em;
+        margin-bottom: 2em;
+        height: 10px;
+        width: 80%;
+    }
+    #volume {
+        background-color: white;
+        border-radius: 5px;
+        height: 100%;
+        width: 0%;
+        transition: width 0.1s linear;
+    }
+    .voltxt{
+        margin: 0;
+        color: #CAD2C5;
+        justify-self: flex-start;
+    }
+    .mainmusicbody{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+    }
+    #upnext{
+        margin-top: 2em;
+        align-self: flex-start;
+        padding-left: 1em;
+        font-size: 20px;
+    }
+    .upnext-txt{
+        color:#9FBCA5;
+        font-size: 24px;
+    }
+    #nextsongtitle{
+        list-style:decimal;
+        padding: 0;
+    }
+    .queuesongs{
+        color: #9FBCA5;
+        padding-left: 0.2em;
+    }
+    .navi{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+    }
+    #theme{
+        position:absolute;
+        right: 20px;
+        top: 20px;
+        background: none;
+        border: none;
+        color: #0e4b50;
+        cursor: pointer;
+        font-size: 30px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    #container{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+    .nextsong{
+        margin: 2em;
+        padding: 0;
+        height: 270px;
+        width: 260px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+    }
+    #nextimg{
+        opacity: 50%;
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+    #nexttxt{
+        margin-bottom: 1em;
+        color: #2F3E46;
+        font-size: 20px;
+    }
+}
